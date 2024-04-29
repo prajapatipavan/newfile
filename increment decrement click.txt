@@ -1,0 +1,120 @@
+<div class="right-content">
+    <div class="quantity buttons_added">
+        <input  type="button" value="-" class="minus" id="minusvalue">
+        <input type="number" step="1" min="1" max=""  id="qty"  value="1" title="Qty" class="input-text qty text" size="4" pattern=""  >
+        <input type="button" value="+" class="plus" id="plusvalue" >
+    </div>
+    <span id="result"></span>
+</div>
+</div> 
+
+html
+-------------------------------
+js
+---------
+<script>
+
+      
+        
+        
+        // Initializing valueCount to 1
+        let valueCount=1;
+
+        let dec = document.querySelector(".minus");
+        let inc  = document.querySelector(".plus");
+        let count = document.querySelector("#qty");
+        let totalcount = document.querySelector("#result");
+        let totalamount = document.querySelector("#amount");
+
+        inc.addEventListener("click",()=>{
+        	
+        	
+        	
+        // Increment valueCount and store add varible
+
+           let add = valueCount++;
+
+
+           count.value=add;
+
+           totalcount.innerHTML=add;
+           
+           let amount = add*${oneProduct.price};
+           console.log(amount);
+           localStorage.setItem('amount', amount);
+           totalamount.innerHTML=amount ;
+          
+        	
+        })
+
+
+        dec.addEventListener("click",()=>{
+        	
+
+           if(valueCount>=1){
+        
+        	   
+        let sub = valueCount--;
+        count.value=sub;
+
+        console.log(sub);
+        
+         totalcount.innerHTML=sub;
+       
+         
+         let amount = sub*${oneProduct.price};
+         
+         console.log(amount);
+         
+         localStorage.setItem('amount', amount);
+         
+         totalamount.innerHTML=amount;
+         
+         
+     
+           }
+           
+          
+
+       })
+       
+        
+
+    </script>
+
+
+
+
+----------------------------------------------------------
+
+ this code amount value how to use another html page 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Amount</title>
+</head>
+<body>
+    <div>
+        <h2>Amount:</h2>
+        <!-- Displaying the amount value -->
+        <span id="amount"></span>
+    </div>
+
+    <script>
+        // Retrieving the amount from local storage
+        const amount = localStorage.getItem('amount');
+        // Displaying the amount value
+        document.getElementById('amount').textContent = amount;
+        // Clearing the amount from local storage
+        localStorage.removeItem('amount');
+    </script>
+</body>
+</html>
+
+
+
+
+
